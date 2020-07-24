@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Create Article</h1>
+
+    <form action="/create_view/" method="post">
+        {% csrf_token %}
+
+        <label>Title:</label><br/>
+        <input type="text" name="title"/><br/>
+
+
+        <label for="id-status">Status:</label><br/>
+        <select name="status" id="id-status">
+
+            {% for value, label in status_choices %}
+                <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select><br/>
+         <label>Title:</label><br/>
+         <input type="date" name="date"/><br/>
+        <br/>
+        <input type="submit" value="Send"/>
+    </form>
+
+</body>
+</html>

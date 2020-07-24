@@ -5,10 +5,17 @@
     <title>Title</title>
 </head>
 <body>
+<p><a href="create_view/">Создать задачу</a></p>
 {% for todo in todo_list %}
-<div><h3><{{todo.title }}/h3>
+<div><h3>{{todo.title }}</h3>
 <p>{{ todo.status }}</p>
-<p>{{ todo.data }}</p>
+    {% if todo.data != None %}
+    <p>{{ todo.data }}</p>
+    {% else  %}
+    <p>Дата не указана</p>
+    {% endif %} 
+
+
 </div>
 {% endfor %}
 

@@ -5,40 +5,39 @@ from django.http import HttpResponseNotAllowed, Http404
 
 
 def index_view(request):
-        data = Todo.objects.all()
-
-        return render(request, 'index.html', context={
+    data = Todo.objects.all()
+    return render(request, 'index.html', context={
             'todo_list': data})
 
 
 
-def article_view(request, pk):
+# def article_view(request, pk):
     # try:
     #     article = Article.objects.get(pk=pk)
     # except Article.DoesNotExist:
     #     raise Http404
 
-    article = get_object_or_404(Article, pk=pk)
+    # article = get_object_or_404(Todo, pk=pk)
+    #
+    # context = {'article': article}
+    # return render(request, 'article_view.html', context)
 
-    context = {'article': article}
-    return render(request, 'article_view.html', context)
 
-
-def article_create_view(request):
+def create_view(request):
     if request.method == "GET":
-        return render(request, 'article_create.html', context={
+        return render(request, 'create_todo.html', context={
             'status_choices': STATUS_CHOICES
         })
     elif request.method == 'POST':
         title = request.POST.get('title')
-        text = request.POST.get('text')
-        author = request.POST.get('author')
+        date = request.POST.get('date')
         status = request.POST.get('status')
-        article = Article.objects.create(title=title, text=text, author=author, status=status)
+        if date == '':
+            Todo.objects.create(title=title, status=status)
+        else:
+            Todo.objects.create(title=title, data=date, status=status)
 
-        # url = reverse('article_view', kwargs={'pk': article.pk})
-        # return redirect(url)
-        return redirect('article_view', pk=article.pk)
+        return redirect('index')
     else:
         return HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
 
