@@ -1,18 +1,15 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from webapp.models import Article, STATUS_CHOICES
+from webapp.models import Todo, STATUS_CHOICES
 from django.http import HttpResponseNotAllowed, Http404
 
 
 def index_view(request):
-    is_admin = request.GET.get('is_admin', None)
-    if is_admin:
-        data = Article.objects.all()
-    else:
-        data = Article.objects.filter(status='moderated')
-    return render(request, 'index.html', context={
-        'articles': data
-    })
+        data = Todo.objects.all()
+
+        return render(request, 'index.html', context={
+            'todo_list': data})
+
 
 
 def article_view(request, pk):

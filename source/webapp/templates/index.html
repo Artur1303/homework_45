@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
+{% for todo in todo_list %}
+<div><h3><{{todo.title }}/h3>
+<p>{{ todo.status }}</p>
+<p>{{ todo.data }}</p>
+</div>
+{% endfor %}
 
 </body>
 </html>
