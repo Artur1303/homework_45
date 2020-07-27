@@ -29,11 +29,12 @@ def create_view(request):
     elif request.method == 'POST':
         title = request.POST.get('title')
         date = request.POST.get('date')
+        descriptions = request.POST.get('descriptions')
         status = request.POST.get('status')
         if date == '':
-            Todo.objects.create(title=title, status=status)
+            Todo.objects.create(title=title, descriptions=descriptions, status=status)
         else:
-            Todo.objects.create(title=title, data=date, status=status)
+            Todo.objects.create(title=title, descriptions=descriptions, data=date, status=status)
 
         return redirect('index')
     else:
