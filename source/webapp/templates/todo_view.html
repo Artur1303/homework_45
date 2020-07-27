@@ -5,7 +5,7 @@
 {% block content %}
         <h3>{{todo.title }}</h3>
         <p>{{ todo.status }}</p>
-        <p>{{ todo.descriptions }}</p>
+        <pre>{{ todo.descriptions }}</pre>
         {% if todo.data != None %}
         <p>{{ todo.data }}</p>
         {% else  %}
