@@ -9,8 +9,6 @@ def index_view(request):
     return render(request, 'index.html', context={
             'todo_list': data})
 
-
-
 # def article_view(request, pk):
     # try:
     #     article = Article.objects.get(pk=pk)
