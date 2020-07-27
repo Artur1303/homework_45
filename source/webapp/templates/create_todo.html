@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Create Article</h1>
+{% extends 'base.html' %}
 
-    <form action="/create_view/" method="post">
+{% block title %}Create{% endblock %}
+
+{% block content %}
+    <h1>Create Tack</h1>
+
+   <form action="/create_view/" method="post">
         {% csrf_token %}
 
         <label>Title:</label><br/>
         <input type="text" name="title"/><br/>
         <br>
 
-        <label >Descriptions:</label><br/>
-
-        <input type="text" name="descriptions"/><br/>
+        <label>Description:</label><br/>
+        <textarea name="descriptions"></textarea><br/>
 <br/>
         <label for="id-status">Status:</label><br/>
         <select name="status" id="id-status">
@@ -31,6 +28,6 @@
         <br/>
         <input type="submit" value="Send"/>
     </form>
+{% endblock %}
 
-</body>
-</html>
+

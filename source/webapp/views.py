@@ -9,16 +9,11 @@ def index_view(request):
     return render(request, 'index.html', context={
             'todo_list': data})
 
-# def article_view(request, pk):
-    # try:
-    #     article = Article.objects.get(pk=pk)
-    # except Article.DoesNotExist:
-    #     raise Http404
 
-    # article = get_object_or_404(Todo, pk=pk)
-    #
-    # context = {'article': article}
-    # return render(request, 'article_view.html', context)
+def todo_view(request, pk):
+    todo = get_object_or_404(Todo, pk=pk)
+    context = {'todo': todo}
+    return render(request, 'todo_view.html', context)
 
 
 def create_view(request):

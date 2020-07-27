@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}todo_list{% endblock %}
+{% block title %}View{% endblock %}
+
 {% block content %}
-{% for todo in todo_list %}
-    <div>
-        <a href="todo_view/{{ todo.pk }}"><h3>{{todo.title }}</h3></a>
+        <h3>{{todo.title }}</h3>
         <p>{{ todo.status }}</p>
+        <p>{{ todo.descriptions }}</p>
         {% if todo.data != None %}
         <p>{{ todo.data }}</p>
         {% else  %}
         <p>Дата не указана</p>
         {% endif %}
-    </div>
-{% endfor %}
 {% endblock %}
