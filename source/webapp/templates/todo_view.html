@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}View{% endblock %}
-
+{% block menu %}
+    <li><a href="{% url 'todo_update' todo.pk %}">Edit</a></li>
+{% endblock %}
 {% block content %}
+
         <h3>{{todo.title }}</h3>
         <p>{{ todo.status }}</p>
         <pre>{{ todo.descriptions }}</pre>

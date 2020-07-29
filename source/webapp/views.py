@@ -36,3 +36,13 @@ def create_view(request):
         return HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
 
 
+def todo_update_view(request, pk):
+    todo = get_object_or_404(Todo, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'update.html', context={'todo': todo})
+    elif request.method == 'POST':
+        todo.title = request.POST.get('title')
+        todo.status = request.POST.get('status')
+        todo.descriptions = request.POST.get('descriptions')
+        todo.save()
+        return redirect('todo_view', pk=todo.pk)

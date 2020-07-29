@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Update Todo{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'todo_view' todo.pk %}">View</a></li>
+{% endblock %}
+{% block content %}
+    <h1>Update Todo</h1>
+    <form method="POST" action="{% url "todo_update" todo.pk %}">
+        {% csrf_token %}
+        <p><label>Title</label> <input type="text" name="title" value="{{ todo.title }}"></p>
+        <p><label>Status</label> <input type="text" name="status" value="{{ todo.status }}"></p>
+        <p><label>Descriptions</label> <textarea name="descriptions">{{ todo.descriptions }}</textarea></p>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+{% endblock %}
