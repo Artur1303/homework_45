@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Delete Todo{% endblock %}
 {% block menu %}
-    <li><a href="{% url 'todo_view' todo.pk %}">View</a></li>
+    <li><a href="{% url 'create_view' %}">View</a></li>
 {% endblock %}
 {% block content %}
     <h1>Are you sure want to delete todo "{{ todo }}"?</h1>

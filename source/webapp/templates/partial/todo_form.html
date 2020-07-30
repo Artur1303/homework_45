@@ -1,0 +1,13 @@
+{% csrf_token %}
+<p><label>Title</label> <input type="text" name="title" value="{{ todo.title }}"></p>
+<p><label>Descriptions</label> <input type="text" name="descriptions" value="{{ todo.descriptions }}"></p>
+
+      <p> <label for="id-status">Status:</label><br/>
+        <select name="status" id="id-status">
+
+            {% for value, label in status_choices %}
+                <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select></p>
+ <p> <label>Title:</label><input type="date" name="data">{{ todo.data }}</p>
+<input type="submit" value="{{ button_text|default:"Submit" }}">

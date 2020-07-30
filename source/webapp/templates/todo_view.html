@@ -3,7 +3,7 @@
 {% block title %}View{% endblock %}
 {% block menu %}
     <li><a href="{% url 'todo_update' todo.pk %}">Edit</a></li>
-    <p><a href="{% url 'todo_delete' todo.pk %}">Delete</a></p>
+    <li><a href="{% url 'todo_delete' todo.pk %}">Delete</a></li>
 {% endblock %}
 {% block content %}
 

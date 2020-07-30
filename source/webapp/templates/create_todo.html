@@ -1,34 +1,9 @@
-{% extends 'base.html' %}
-
-{% block title %}Create{% endblock %}
-
+{% extends "base.html" %}
+{% block title %}Creat Todo{% endblock %}
 {% block content %}
-    <h1>Create Tack</h1>
+    <h1>Create Todo</h1>
+    <form method="POST" action="{% url "create_view" %}">
+        {% include 'partial/todo_form.html' with button_text="Create" %}
 
-   <form action="/create_view/" method="post">
-        {% csrf_token %}
-
-        <label>Title:</label><br/>
-        <input type="text" name="title"/><br/>
-        <br>
-
-        <label>Description:</label><br/>
-   <textarea  name="descriptions"></textarea><br/>
-
-<br/>
-        <label for="id-status">Status:</label><br/>
-        <select name="status" id="id-status">
-
-            {% for value, label in status_choices %}
-                <option value="{{ value }}">{{ label }}</option>
-            {% endfor %}
-        </select><br/>
-        <br>
-         <label>Title:</label><br/>
-         <input type="date" name="date"/><br/>
-        <br/>
-        <input type="submit" value="Send"/>
     </form>
 {% endblock %}
-
-
