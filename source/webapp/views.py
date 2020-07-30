@@ -46,3 +46,13 @@ def todo_update_view(request, pk):
         todo.descriptions = request.POST.get('descriptions')
         todo.save()
         return redirect('todo_view', pk=todo.pk)
+
+
+def todo_delete_view(request, pk):
+    todo = get_object_or_404(Todo, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'delete.html', context={'todo': todo})
+    elif request.method == "POST":
+        todo.delete()
+        return redirect('index')
+
